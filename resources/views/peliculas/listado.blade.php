@@ -1,3 +1,5 @@
+@include('includes.header')
+
 <h1>{{$titulo}}</h1>
 
 <!--comentario html-->
@@ -43,3 +45,6 @@ el numero es {{$i}}
 @foreach ($listado as  $list )
 <p>{{$list}}</p>
 @endforeach
+
+
+@include('includes.footer')
