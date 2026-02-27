@@ -16,8 +16,26 @@ class PeliculaController extends Controller
         ]);
     }
 
-    public  function detalle(){
-        echo "detalle de la pelicula";
+    public  function detalle($year = null)
+    {
+        return view('pelicula.detalle', [
+            'year' => $year
+        ]);
+    }
+
+    public function redirigir() {
+        return redirect()->route('peliculas.detalle');
+    }
+
+    public function formulario(){
+        return view('pelicula.formulario');
+    }
+
+    public function recibir(Request $request){
+        $nombre = $request->input('nombre');
+
+        var_dump($nombre);
         die();
     }
+
 }

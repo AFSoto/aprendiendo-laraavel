@@ -3,3 +3,9 @@
 
 
 <p>pagina {{$pagina}} </p>
+
+
+<a href="{{route('peliculas.detalle')}}">ir al detalle</a>
+
+
+

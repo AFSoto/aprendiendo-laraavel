@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PeliculaController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Middleware\TestYear;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -13,11 +14,26 @@ Route::get('/', function () {
 // Route::get('/peliculas', 'PeliculaController@index');
 
 
-Route::get('/peliculas/{pagina?}', [PeliculaController::class, 'index']);
+Route::get('/peliculas/{pagina?}', [PeliculaController::class, 'index'])
+    ->name('peliculas.index');
 
 
-Route::get('/detalle', [PeliculaController::class, 'detalle'])
-    ->name('pelicula.detalle');
+
+Route::get('/formulario', [PeliculaController::class, 'formulario'])
+    ->name('peliculas.formulario');
+
+Route::post('/recibir',[PeliculaController::class, 'recibir']);
+
+Route::get('/detalle/{year?}', [PeliculaController::class, 'detalle'])
+    ->name('peliculas.detalle')
+    ->middleware('testyear');
+
+
+
+Route::post('/redirigir', [PeliculaController::class, 'recibir'])
+    ->name('peliculas.redirigir');
+
+
 
 Route::resource('usuario', UsuarioController::class);
 
