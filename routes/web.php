@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FrutaController;
 use App\Http\Controllers\PeliculaController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Middleware\TestYear;
@@ -33,9 +34,33 @@ Route::get('/detalle/{year?}', [PeliculaController::class, 'detalle'])
 Route::post('/redirigir', [PeliculaController::class, 'recibir'])
     ->name('peliculas.redirigir');
 
-
-
 Route::resource('usuario', UsuarioController::class);
+
+
+
+//rutas de fruta
+Route::group(['prefix'=>'frutas'],function(){
+    Route::get('index',[FrutaController::class,'index'])
+    ->name('frutas.index');
+
+    Route::get('detail/{id}',[FrutaController::class,'detail'])
+    ->name('frutas.detail');
+
+    Route::get('crear',[FrutaController::class,'create'])
+    ->name('frutas.create');
+
+    Route::post('save',[FrutaController::class,'save'])
+    ->name('frutas.save');
+
+    Route::get('delete/{id}',[FrutaController::class,'delete'])
+    ->name('frutas.delete');
+
+    Route::get('editar/{id}',[FrutaController::class,'edit'])
+    ->name('frutas.edit');
+
+    Route::post('update',[FrutaController::class,'update'])
+    ->name('frutas.update');
+});
 
 // Route::get('/mostrar-fecha', function () {
 //     $titulo = "estoy mostrando la fecha";

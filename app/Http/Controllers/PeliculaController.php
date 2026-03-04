@@ -33,9 +33,10 @@ class PeliculaController extends Controller
 
     public function recibir(Request $request){
         $nombre = $request->input('nombre');
+        $email = $request->input('email');
 
-        var_dump($nombre);
-        die();
+        echo "el email: $email   nombre: $nombre";
+
     }
 
 }
